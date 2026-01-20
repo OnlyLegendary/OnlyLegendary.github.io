@@ -3,70 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Electronics & Photography</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Seth Soileau | Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <h1 class="logo">DESIGN<span>LAB</span></h1>
-            <ul class="nav-links">
-                <li><a href="#electronics">Engineering</a></li>
-                <li><a href="#photography">Photography</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+    <header>
+        <div class="header-content">
+            <h1>SETH SOILEAU</h1>
+            <p class="tagline">Tech Enthusiast & Retro Photographer</p>
         </div>
-    </nav>
-
-    <header class="hero">
-        <h2>Precision & Perspective</h2>
-        <p>Documenting circuits and capturing light.</p>
+        
+        <nav class="tab-menu">
+            <button class="tab-btn active" onclick="openTab(event, 'electronics')">Electronics</button>
+            <button class="tab-btn" onclick="openTab(event, 'photography')">Photography</button>
+            <button class="tab-btn" onclick="openTab(event, 'about')">About Me</button>
+        </nav>
     </header>
 
-    <section id="electronics" class="section-container">
-        <h3 class="section-title">Electronics Projects</h3>
-        <div class="grid-layout">
-            <div class="card electronics-card">
-                <div class="card-image hardware-placeholder">
-                    <i class="fas fa-microchip"></i>
+    <main class="content-wrapper">
+        <section id="electronics" class="tab-content active">
+            <div class="project-grid">
+                <div class="card">
+                    <div class="card-img"><i class="fas fa-bolt"></i></div>
+                    <h3>Project One</h3>
+                    <p>Describe your circuit or build here. Keep it short and sweet.</p>
                 </div>
-                <div class="card-content">
-                    <h4>Automated Power Supply</h4>
-                    <p>A programmable DC power supply featuring a custom PCB and OLED interface.</p>
-                    <div class="tags">
-                        <span>Schematic</span>
-                        <span>Firmware</span>
-                    </div>
+                </div>
+        </section>
+
+        <section id="photography" class="tab-content">
+            <div class="retro-gallery">
+                <div class="photo-card" onclick="openLightbox('images/photography/photo1.jpg')">
+                    <img src="images/photography/photo1.jpg" alt="Retro Shot">
+                    <div class="photo-info">NO_MEMORY_01.JPG</div>
+                </div>
+                <div class="photo-card" onclick="openLightbox('images/photography/photo2.jpg')">
+                    <img src="images/photography/photo2.jpg" alt="Retro Shot">
+                    <div class="photo-info">NO_MEMORY_02.JPG</div>
                 </div>
             </div>
-            </div>
-    </section>
+        </section>
 
-    <section id="photography" class="section-container dark-bg">
-        <h3 class="section-title">Photography</h3>
-        <div class="photo-grid">
-            <div class="photo-item">
-                <div class="photo-placeholder">Landscape Series</div>
+        <section id="about" class="tab-content">
+            <div class="about-card">
+                <h2>Hey, I'm Seth.</h2>
+                <p>I'm 16 and I spend my time messing with electronics and taking photos with a "No Memory" retro vibe. This site is where I track my progress and show off the stuff I've built.</p>
+                <div class="contact-links">
+                    <a href="mailto:your@email.com" class="btn">Email Me</a>
+                </div>
             </div>
-            <div class="photo-item">
-                <div class="photo-placeholder">Street Photography</div>
-            </div>
-            <div class="photo-item">
-                <div class="photo-placeholder">Macro Electronics</div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <footer id="contact">
-        <p>Let's collaborate on your next project.</p>
-        <div class="socials">
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
-    </footer>
+    <div id="lightbox" class="lightbox" onclick="this.style.display='none'">
+        <span class="close">&times;</span>
+        <img class="lightbox-img" id="lightbox-img">
+    </div>
 
+    <script>
+        // Tab Logic
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Lightbox Logic
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+    </script>
 </body>
 </html>
