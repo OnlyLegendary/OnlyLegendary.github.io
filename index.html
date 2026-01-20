@@ -10,78 +10,112 @@
 <body>
 
     <header>
-        <div class="header-content">
-            <h1>SETH SOILEAU</h1>
-            <p class="tagline">Tech Enthusiast & Retro Photographer</p>
+        <div class="header-inner">
+            <div class="logo-area">
+                <h1>SETH SOILEAU</h1>
+                <div class="status-bar">
+                    <span class="status-dot"></span> SYSTEM_READY
+                </div>
+            </div>
+            
+            <nav class="tabs">
+                <button class="tab-link active" onclick="openSection(event, 'electronics')">
+                    <i class="fas fa-microchip"></i> Electronics
+                </button>
+                <button class="tab-link" onclick="openSection(event, 'photography')">
+                    <i class="fas fa-camera"></i> Photography
+                </button>
+                <button class="tab-link" onclick="openSection(event, 'about')">
+                    <i class="fas fa-user"></i> About
+                </button>
+            </nav>
         </div>
-        
-        <nav class="tab-menu">
-            <button class="tab-btn active" onclick="openTab(event, 'electronics')">Electronics</button>
-            <button class="tab-btn" onclick="openTab(event, 'photography')">Photography</button>
-            <button class="tab-btn" onclick="openTab(event, 'about')">About Me</button>
-        </nav>
     </header>
 
-    <main class="content-wrapper">
+    <main class="container">
         <section id="electronics" class="tab-content active">
-            <div class="project-grid">
-                <div class="card">
-                    <div class="card-img"><i class="fas fa-bolt"></i></div>
-                    <h3>Project One</h3>
-                    <p>Describe your circuit or build here. Keep it short and sweet.</p>
+            <div class="grid">
+                <div class="project-card">
+                    <div class="project-preview">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Custom Circuit Board</h3>
+                        <p>Project details and schematic descriptions go here. Focus on the hardware specs.</p>
+                        <div class="tech-stack">
+                            <span>PCB Design</span>
+                            <span>Soldering</span>
+                        </div>
+                    </div>
                 </div>
                 </div>
         </section>
 
         <section id="photography" class="tab-content">
-            <div class="retro-gallery">
-                <div class="photo-card" onclick="openLightbox('images/photography/photo1.jpg')">
-                    <img src="images/photography/photo1.jpg" alt="Retro Shot">
-                    <div class="photo-info">NO_MEMORY_01.JPG</div>
+            <div class="gallery-info">
+                <h2>DIR: /IMAGES/NO_MEMORY/</h2>
+                <p>Authentic retro aesthetic. Click to expand.</p>
+            </div>
+            
+            <div class="photo-grid">
+                <div class="photo-card" onclick="openLightbox('images/P1020835.JPG')">
+                    <img src="images/P1020835.JPG" alt="P1020835">
+                    <div class="photo-meta">P1020835.JPG</div>
                 </div>
-                <div class="photo-card" onclick="openLightbox('images/photography/photo2.jpg')">
-                    <img src="images/photography/photo2.jpg" alt="Retro Shot">
-                    <div class="photo-info">NO_MEMORY_02.JPG</div>
+                <div class="photo-card" onclick="openLightbox('images/P1020864.JPG')">
+                    <img src="images/P1020864.JPG" alt="P1020864">
+                    <div class="photo-meta">P1020864.JPG</div>
+                </div>
+                <div class="photo-card" onclick="openLightbox('images/P1020871.JPG')">
+                    <img src="images/P1020871.JPG" alt="P1020871">
+                    <div class="photo-meta">P1020871.JPG</div>
+                </div>
+                <div class="photo-card" onclick="openLightbox('images/P1020873.JPG')">
+                    <img src="images/P1020873.JPG" alt="P1020873">
+                    <div class="photo-meta">P1020873.JPG</div>
                 </div>
             </div>
         </section>
 
         <section id="about" class="tab-content">
-            <div class="about-card">
-                <h2>Hey, I'm Seth.</h2>
-                <p>I'm 16 and I spend my time messing with electronics and taking photos with a "No Memory" retro vibe. This site is where I track my progress and show off the stuff I've built.</p>
-                <div class="contact-links">
-                    <a href="mailto:your@email.com" class="btn">Email Me</a>
+            <div class="about-box">
+                <h2>Seth Soileau</h2>
+                <p>I am a 16-year-old creator specializing in electronics engineering and retro-style photography. I enjoy working at the intersection of old-school visual styles and modern hardware design.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="mailto:your-email@example.com"><i class="fas fa-envelope"></i> Contact</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <div id="lightbox" class="lightbox" onclick="this.style.display='none'">
-        <span class="close">&times;</span>
-        <img class="lightbox-img" id="lightbox-img">
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img id="lightbox-img" src="" alt="Zoomed view">
     </div>
 
     <script>
-        // Tab Logic
-        function openTab(evt, tabName) {
+        function openSection(evt, sectionName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].classList.remove("active");
             }
-            tablinks = document.getElementsByClassName("tab-btn");
+            tablinks = document.getElementsByClassName("tab-link");
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].classList.remove("active");
             }
-            document.getElementById(tabName).classList.add("active");
+            document.getElementById(sectionName).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
 
-        // Lightbox Logic
         function openLightbox(src) {
             document.getElementById('lightbox-img').src = src;
             document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
         }
     </script>
 </body>
