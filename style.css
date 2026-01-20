@@ -1,118 +1,200 @@
 :root {
-    --accent: #ff4757; /* A cool red for the retro vibe */
-    --bg: #ffffff;
-    --card-bg: #f9f9f9;
+    --bg-color: #0d0d0d;
+    --text-color: #e0e0e0;
+    --accent-color: #00ff41; /* Terminal Green */
+    --card-bg: #1a1a1a;
+    --border-color: #333;
 }
+
+* { box-sizing: border-box; }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', -apple-system, sans-serif;
     margin: 0;
-    background-color: var(--bg);
-    color: #333;
+    line-height: 1.6;
 }
 
+/* Header & Nav */
 header {
-    text-align: center;
-    padding: 3rem 1rem;
-    background: #1a1a1a;
-    color: white;
+    background: #000;
+    border-bottom: 1px solid var(--border-color);
+    padding: 2rem 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-.tagline {
-    opacity: 0.7;
-    letter-spacing: 2px;
-    font-size: 0.9rem;
-    margin-top: 10px;
-}
-
-/* Tab Menu */
-.tab-menu {
-    margin-top: 2rem;
+.header-inner {
+    max-width: 1000px;
+    margin: 0 auto;
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.tab-btn {
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.2);
-    color: white;
-    padding: 8px 20px;
+h1 {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+.status-bar {
+    font-family: monospace;
+    font-size: 0.7rem;
+    color: var(--accent-color);
+    margin-top: 5px;
+}
+
+.status-dot {
+    height: 8px;
+    width: 8px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    display: inline-block;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+.tabs {
+    display: flex;
+    gap: 1rem;
+}
+
+.tab-link {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: #888;
+    padding: 8px 16px;
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 4px;
+    font-size: 0.85rem;
     transition: 0.3s;
 }
 
-.tab-btn.active, .tab-btn:hover {
-    background: var(--accent);
-    border-color: var(--accent);
+.tab-link:hover, .tab-link.active {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    background: rgba(0, 255, 65, 0.05);
 }
 
-/* Content Control */
-.tab-content {
-    display: none;
-    padding: 2rem;
+/* Main Layout */
+.container {
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 2rem auto;
+    padding: 0 1rem;
 }
 
-.tab-content.active {
-    display: block;
-    animation: fadeIn 0.5s ease;
-}
+.tab-content { display: none; animation: fadeIn 0.4s ease; }
+.tab-content.active { display: block; }
 
-/* Retro Photo Gallery */
-.retro-gallery {
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Electronics Grid */
+.grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.project-preview {
+    height: 180px;
+    background: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #444;
+}
+
+.project-info { padding: 1.5rem; }
+.tech-stack span {
+    font-size: 0.7rem;
+    background: #333;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+/* Photography Gallery */
+.gallery-info h2 {
+    font-family: monospace;
+    font-size: 1rem;
+    color: var(--accent-color);
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+    margin-top: 2rem;
 }
 
 .photo-card {
     background: #000;
-    border: 8px solid #000;
-    cursor: pointer;
-    transition: transform 0.2s;
+    border: 1px solid var(--border-color);
+    cursor: zoom-in;
+    transition: 0.3s;
 }
 
-.photo-card:hover {
-    transform: scale(1.02);
-}
+.photo-card:hover { border-color: var(--accent-color); }
 
 .photo-card img {
     width: 100%;
     display: block;
-    filter: contrast(1.1) saturate(1.2); /* Slight boost for that retro look */
+    aspect-ratio: 1/1;
+    object-fit: cover;
 }
 
-.photo-info {
-    color: #00ff00; /* Green digital text like an old camera */
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 10px;
-    padding: 5px;
+.photo-meta {
+    font-family: monospace;
+    font-size: 0.65rem;
+    padding: 8px;
+    color: #666;
 }
 
 /* Lightbox */
 .lightbox {
     display: none;
     position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95);
     z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.9);
     justify-content: center;
     align-items: center;
 }
 
-.lightbox-img {
-    max-width: 90%;
-    max-height: 80%;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+.lightbox-img { max-width: 90%; max-height: 85%; border: 2px solid var(--accent-color); }
+
+.close-btn {
+    position: absolute;
+    top: 20px; right: 30px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+/* About Box */
+.about-box {
+    background: var(--card-bg);
+    padding: 3rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.social-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    margin-right: 20px;
 }
