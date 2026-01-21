@@ -1,224 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Seth — Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seth Soileau // Portfolio</title>
 
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <!-- Icons -->
-  <script src="https://kit.fontawesome.com/a2e0e6ad3f.js" crossorigin="anonymous"></script>
-
-  <style>
-    :root {
-      --bg: #0e0e0e;
-      --fg: #e5e5e5;
-      --muted: #9a9a9a;
-      --accent: #6f8cff;
-      --card: #161616;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: "JetBrains Mono", monospace;
-      background: var(--bg);
-      color: var(--fg);
-      line-height: 1.6;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    header {
-      max-width: 1000px;
-      margin: 80px auto 40px;
-      padding: 0 20px;
-    }
-
-    header h1 {
-      font-size: 2.2rem;
-      margin: 0 0 10px;
-    }
-
-    header p {
-      color: var(--muted);
-      max-width: 700px;
-    }
-
-    nav {
-      margin-top: 25px;
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    nav button {
-      background: none;
-      border: none;
-      color: var(--fg);
-      font-family: inherit;
-      font-size: 0.9rem;
-      cursor: pointer;
-      padding: 6px 0;
-      border-bottom: 2px solid transparent;
-    }
-
-    nav button.active {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    main {
-      max-width: 1000px;
-      margin: 0 auto 80px;
-      padding: 0 20px;
-    }
-
-    section {
-      display: none;
-    }
-
-    section.active {
-      display: block;
-    }
-
-    .card {
-      background: var(--card);
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-
-    .card h3 {
-      margin-top: 0;
-    }
-
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 15px;
-    }
-
-    .photo-grid img {
-      width: 100%;
-      border-radius: 8px;
-      object-fit: cover;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      color: var(--muted);
-      font-size: 0.8rem;
-    }
-
-    .socials {
-      margin-top: 15px;
-    }
-
-    .socials a {
-      margin: 0 10px;
-      font-size: 1.2rem;
-    }
-  </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-<header>
-  <h1>Electronics, Imaging, and Offline Systems</h1>
-  <p>
-    I build hardware-first computing projects and shoot photography entirely in-camera,
-    focusing on physical systems, constraints, and real-world behavior.
-  </p>
+    <div class="cursor"></div>
 
-  <nav>
-    <button class="active" data-tab="works">Works</button>
-    <button data-tab="photos">Photography</button>
-    <button data-tab="info">Info</button>
-  </nav>
-</header>
+    <nav class="glass-nav">
+        <div class="nav-content">
+            <div class="brand">
+                <span class="name">SETH SOILEAU</span>
+                <span class="status-tag">ACTIVE_DEV</span>
+            </div>
 
-<main>
-  <!-- WORKS -->
-  <section id="works" class="active">
-    <div class="card">
-      <h3>Portable Offline Computing Device</h3>
-      <p>
-        A handheld, offline-first system exploring local inference, privacy-focused interaction,
-        and constrained hardware design. The project focuses on experimentation rather than scale,
-        prioritizing reliability and transparency over cloud dependence.
-      </p>
+            <div class="nav-controls">
+                <button class="nav-btn active" data-tab="works">The Works</button>
+                <button class="nav-btn" data-tab="photography">Photography</button>
+                <button class="nav-btn" data-tab="info">Info</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="viewport">
+
+        <section id="works" class="tab-pane active">
+            <div class="section-header">
+                <h2><i class="fas fa-terminal"></i> THE_WORKS</h2>
+                <p>My engineering projects and cool builds.</p>
+            </div>
+
+            <div class="project-grid">
+                <div class="circuit-card featured">
+                    <div class="card-body">
+                        <div class="status-label">CURRENT_FOCUS</div>
+                        <h3>Portable Offline AI Entity</h3>
+                        <p>
+                            Designing a fully offline, handheld device capable of real-time chat translation,
+                            image generation, and document scanning. No cloud, no tracking — just private edge computing.
+                        </p>
+                        <div class="badges">
+                            <span>Embedded AI</span>
+                            <span>Edge Computing</span>
+                            <span>PCB Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="photography" class="tab-pane">
+            <div class="section-header">
+                <h2><i class="fas fa-camera-retro"></i> NO_MEMORY_ARCHIVE</h2>
+                <p>Pictures lost in memory recovered.</p>
+            </div>
+
+            <div class="photo-matrix">
+                <div class="photo-cell" data-img="images/P1020835.JPG">
+                    <img src="images/P1020835.JPG" alt="P1020835">
+                    <div class="overlay"><span>VIEW_RAW</span></div>
+                </div>
+
+                <div class="photo-cell" data-img="images/P1020864.JPG">
+                    <img src="images/P1020864.JPG" alt="P1020864">
+                    <div class="overlay"><span>VIEW_RAW</span></div>
+                </div>
+
+                <div class="photo-cell" data-img="images/P1020871.JPG">
+                    <img src="images/P1020871.JPG" alt="P1020871">
+                    <div class="overlay"><span>VIEW_RAW</span></div>
+                </div>
+
+                <div class="photo-cell" data-img="images/P1020873.JPG">
+                    <img src="images/P1020873.JPG" alt="P1020873">
+                    <div class="overlay"><span>VIEW_RAW</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="info" class="tab-pane">
+            <div class="bio-container">
+                <div class="bio-card">
+                    <h2>I’m Seth.</h2>
+                    <p>
+                        I’m 16 and enjoy experimenting with different camera effects, working entirely in-camera
+                        without digital enhancements. I shoot in RAW.
+                    </p>
+                    <p>
+                        I’m also currently trying to build a fully portable offline AI.
+                    </p>
+
+                    <div class="info-footer">
+                        <a href="mailto:seth@example.com" class="contact-trigger">Get in touch</a>
+
+                        <div class="socials">
+                            <a href="https://github.com/OnlyLegendary" target="_blank" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="viewer" class="viewer">
+        <div class="viewer-content">
+            <img id="full-img" alt="">
+            <p id="img-label" class="img-label"></p>
+        </div>
     </div>
 
-    <div class="card">
-      <h3>Hardware & Systems Experiments</h3>
-      <p>
-        Ongoing work with embedded systems, custom software stacks, and low-level tooling.
-        Projects emphasize understanding fundamentals instead of abstraction-heavy frameworks.
-      </p>
-    </div>
-  </section>
+    <script>
+        // Tab switching
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tab = btn.dataset.tab;
 
-  <!-- PHOTOGRAPHY -->
-  <section id="photos">
-    <div class="photo-grid">
-      <!-- Replace src paths with your actual images -->
-      <img src="images/photo1.jpg" alt="Photograph">
-      <img src="images/photo2.jpg" alt="Photograph">
-      <img src="images/photo3.jpg" alt="Photograph">
-      <img src="images/photo4.jpg" alt="Photograph">
-    </div>
-  </section>
+                document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
 
-  <!-- INFO -->
-  <section id="info">
-    <div class="card">
-      <p>
-        I’m interested in how systems behave when stripped down to essentials —
-        whether that’s a camera sensor, a microcontroller, or a self-contained computing device.
-        My work avoids unnecessary automation and favors direct control and understanding.
-      </p>
+                document.getElementById(tab).classList.add('active');
+                btn.classList.add('active');
+            });
+        });
 
-      <p>
-        This site is a living archive, not a finished product.
-      </p>
+        // Image viewer
+        document.querySelectorAll('.photo-cell').forEach(cell => {
+            cell.addEventListener('click', () => {
+                const url = cell.dataset.img;
+                document.getElementById('full-img').src = url;
+                document.getElementById('img-label').textContent = url.split('/').pop();
+                document.getElementById('viewer').style.display = 'flex';
+            });
+        });
 
-      <div class="socials">
-        <a href="https://github.com/OnlyLegendary" target="_blank" aria-label="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-</main>
+        document.getElementById('viewer').addEventListener('click', () => {
+            document.getElementById('viewer').style.display = 'none';
+        });
 
-<footer>
-  © 2026 Seth
-</footer>
-
-<script>
-  const buttons = document.querySelectorAll("nav button");
-  const sections = document.querySelectorAll("main section");
-
-  buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      buttons.forEach(b => b.classList.remove("active"));
-      sections.forEach(s => s.classList.remove("active"));
-
-      btn.classList.add("active");
-      document.getElementById(btn.dataset.tab).classList.add("active");
-    });
-  });
-</script>
+        // Custom cursor (desktop only)
+        const cursor = document.querySelector('.cursor');
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+    </script>
 
 </body>
 </html>
-
